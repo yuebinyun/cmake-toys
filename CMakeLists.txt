@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.13)
 project(PKG C)
 
 set(CMAKE_C_STANDARD 99)
@@ -9,6 +9,7 @@ pkg_check_modules(GLIB2 REQUIRED glib-2.0)
 file(GLOB SRC "*.c")
 add_executable(PKG ${SRC})
 target_include_directories(PKG PUBLIC ${GLIB2_INCLUDE_DIRS})
+target_link_directories(PKG PUBLIC ${GLIB2_LIBRARY_DIRS})
 target_link_libraries(PKG ${GLIB2_LIBRARIES})
 target_compile_options(PKG PUBLIC ${GLIB2_CFLAGS_OTHER})
 
